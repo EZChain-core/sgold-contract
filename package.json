@@ -1,0 +1,28 @@
+{
+  "name": "sgold-contracts",
+  "version": "0.1.0",
+  "description": "SGold Token",
+  "scripts": {
+    "ti": "truffle init",
+    "compile": "truffle compile --all",
+    "deploy": "truffle migrate --reset --network ${NODE_ENV:-local}",
+    "parser": "babel-eslint",
+    "texec": "truffle exec --network ${NODE_ENV:-local}",
+    "test": "truffle test --bail --network ${NODE_ENV:-local}",
+    "test:debug": "yarn test --show-events",
+    "//pretest": "eslint --ignore-path .gitignore .",
+    "lint": "eslint ./**.js **.js",
+    "travislint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint . --fix",
+    "lint:sol": "solium -d contracts/"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.6.0",
+    "ethers": "^5.6.4",
+    "truffle": "^5.5.12"
+  },
+  "main": "index.js",
+  "repository": "git@github.com:EZChain-core/sgold-contract.git",
+  "license": "MIT",
+  "private": true
+}
