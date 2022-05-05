@@ -15,7 +15,7 @@ contract SGold is ERC20PresetMinterPauser {
     uint taxRate;
     address taxRecipient;
 
-    constructor() ERC20PresetMinterPauser("Stable Gold", "SGold") {
+    constructor() ERC20PresetMinterPauser("Stable Gold", "SGOLD") {
         taxRecipient = _msgSender();
         emit NewTaxRecipient(taxRecipient);
     }
