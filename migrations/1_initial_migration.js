@@ -1,5 +1,5 @@
-const Migrations = artifacts.require("Migrations");
+const SGold = artifacts.require("SGold");
 
 module.exports = function (deployer) {
-  deployer.deploy(Migrations);
+  deployer.deploy(SGold);
 };
