@@ -39,7 +39,7 @@ contract("transfer", async accounts => {
     await sgold.setTax(2, 30000)
 
     await assert.rejects(
-      sgold.transfer(accountTwo, 1, {from: accountOne}),
+      sgold.transfer(accountTwo, 1, { from: accountOne }),
       { reason: 'SGold: overflow' },
     );
 
@@ -127,13 +127,3 @@ contract("transferFrom", async accounts => {
   });
 
 });
-
-
-
-
-
-
-
-
-
-

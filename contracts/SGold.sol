@@ -81,7 +81,7 @@ contract SGold is ERC20PresetMinterPauser {
         address to,
         uint amount
     ) internal {
-        uint tax = taxBase + amount.mul(taxRate).div(TAX_RATE_UNIT);
+        uint tax = taxBase.add(amount.mul(taxRate).div(TAX_RATE_UNIT));
 
         _transfer(from, taxRecipient, tax);
         _transfer(from, to, amount.sub(tax, "SGold: overflow"));
