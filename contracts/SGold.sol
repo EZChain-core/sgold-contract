@@ -11,9 +11,9 @@ contract SGold is ERC20PresetMinterPauser {
     bytes32 public constant TAXER_ROLE = keccak256("TAXER_ROLE");
     uint public constant TAX_RATE_UNIT = 1000000;
 
-    uint taxBase;
-    uint taxRate;
-    address taxRecipient;
+    uint public taxBase;
+    uint public taxRate;
+    address public taxRecipient;
 
     constructor() ERC20PresetMinterPauser("Stable Gold", "SGOLD") {
         taxRecipient = _msgSender();
@@ -80,6 +80,7 @@ contract SGold is ERC20PresetMinterPauser {
         uint amount
     ) internal {
         uint tax = taxBase + amount * taxRate / TAX_RATE_UNIT;
+
         _transfer(from, taxRecipient, tax);
         _transfer(from, to, amount - tax);
     }
