@@ -40,7 +40,7 @@ contract("transfer", async accounts => {
 
     await assert.rejects(
       sgold.transfer(accountTwo, 1, { from: accountOne }),
-      { reason: 'SGold: overflow' },
+      { reason: 'Panic: Arithmetic overflow' },
     );
 
   });

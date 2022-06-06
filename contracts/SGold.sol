@@ -3,10 +3,8 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract SGold is ERC20PresetMinterPauser {
-    using SafeMath for uint256;
     event NewTaxRecipient(address recipient);
     event NewTax(uint base, uint rate);
 
@@ -81,9 +79,9 @@ contract SGold is ERC20PresetMinterPauser {
         address to,
         uint amount
     ) internal {
-        uint tax = taxBase.add(amount.mul(taxRate).div(TAX_RATE_UNIT));
+        uint tax = taxBase + amount * taxRate / TAX_RATE_UNIT;
 
         _transfer(from, taxRecipient, tax);
-        _transfer(from, to, amount.sub(tax, "SGold: overflow"));
+        _transfer(from, to, amount - tax);
     }
 }
